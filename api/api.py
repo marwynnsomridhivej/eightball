@@ -1,10 +1,10 @@
 import json
+import os
 import random
 
 from aiohttp import web
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
-
 
 with open("./api/responses", "r") as resp:
     lines = [line.replace("\n", "") for line in resp.readlines()]
@@ -17,7 +17,8 @@ async def handle(request: Request) -> Response:
     return web.Response(text=json.dumps(ret))
 
 
-app = web.Application()
-app.router.add_get("/eightball", handle)
-
-web.run_app(app)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))
+    app = web.Application()
+    app.router.add_get("/eightball", handle)
+    web.run_app(app, port=port)
