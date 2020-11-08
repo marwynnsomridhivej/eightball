@@ -26,3 +26,7 @@ async def create_app() -> web.Application:
     app.router.add_get("/", index)
     app.router.add_get("/eightball", handle)
     return app
+
+
+if __name__ == "__main__":
+    web.run_app(create_app(), port=int(os.environ.get("PORT", 8080)))
