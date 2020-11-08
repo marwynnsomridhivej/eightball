@@ -20,5 +20,5 @@ async def handle(request: Request) -> Response:
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
     app = web.Application()
-    app.router.add_get("/eightball", handle)
+    app.add_routes([web.get("/eightball", handle)])
     web.run_app(app, port=port)
