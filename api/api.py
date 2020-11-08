@@ -6,7 +6,7 @@ from aiohttp.web_request import Request
 from aiohttp.web_response import Response
 
 
-with open("./responses", "r") as resp:
+with open("./api/responses", "r") as resp:
     lines = [line.replace("\n", "") for line in resp.readlines()]
 
 
